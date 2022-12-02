@@ -1,5 +1,7 @@
 import React, { useContext, useRef } from "react";
 
+import { Outlet } from "react-router-dom";
+
 import ProjectCardLg from "./ProjectCardLg";
 import ProjectGrid from "./ProjectGrid";
 
@@ -32,41 +34,9 @@ const ProjectViewer = () => {
     "https://quartermaster.pythonanywhere.com/"
   );
   return (
-    <div className="" 
-    >
-      {showingGrid ? (
-        <ProjectGrid />
-      ) : project === 1 ? (
-        <ProjectCardLg
-          title="JobTracker"
-          tagline="lorem"
-          description="asdasdasdasd asdasda asdasdas asdasda asdasdas asdasd asdasd"
-          githubURL={project1GitHubURL.current}
-          projectURL={project1LiveURL.current}
-          image={JobTrackerImg}
-          project={project}
-        />
-      ) : project === 2 ? (
-        <ProjectCardLg
-          title="Yahtzee!"
-          tagline="lorem"
-          description="asdasdasdasd asdasda asdasdas asdasda asdasdas asdasd asdasd"
-          githubURL={project2GitHubURL.current}
-          projectURL={project2LiveURL.current}
-          image={YahtzeeImg}
-          project={project}
-        />
-      ) : (
-        <ProjectCardLg
-          title="QuarterMaster"
-          tagline="lorem"
-          description="asdasdasdasd asdasda asdasdas asdasda asdasdas asdasd asdasd"
-          githubURL={project3GitHubURL.current}
-          projectURL={project3LiveURL.current}
-          image={QuarterMasterImg}
-          project={project}
-        />
-      )}
+    <div className="">
+      
+      <Outlet />
     </div>
   );
 };

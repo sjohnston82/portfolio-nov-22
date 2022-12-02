@@ -16,7 +16,7 @@ interface ContainerContextInterface {
 }
 
 type ChildrenProps = {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 };
 
 const ContainerContext = createContext<ContainerContextInterface | null>(null);
@@ -26,13 +26,19 @@ const ContainerContextProvider = ({ children }: ChildrenProps) => {
   const [project, setProject] = useState(1);
   const [showingGrid, setShowingGrid] = useState(true);
   return (
-    <ContainerContext.Provider value={{ showingGrid, setShowingGrid, showingPage, setShowingPage, project, setProject }}>
+    <ContainerContext.Provider
+      value={{
+        showingGrid,
+        setShowingGrid,
+        showingPage,
+        setShowingPage,
+        project,
+        setProject,
+      }}
+    >
       {children}
     </ContainerContext.Provider>
   );
 };
 
-export {
-  ContainerContext,
-  ContainerContextProvider,
-};
+export { ContainerContext, ContainerContextProvider };
