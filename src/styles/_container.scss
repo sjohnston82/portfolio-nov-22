@@ -1,0 +1,80 @@
+.gradient-border {
+  --border-width: 6px;
+
+  position: relative;
+
+  // justify-content: center;
+  // align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  // color: white;
+  // background: #222;
+  border-radius: var(--border-width);
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    // border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 7s alternate infinite;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// @keyframes rotateBorderCover {
+//   0%,
+//   100% {
+//     clip-path: polygon(38% 0, 100% 0, 100% 69%, 64% 100%, 0 100%, 0 25%);
+//   }
+//   50% {
+//     clip-path: polygon(61% 0, 100% 34%, 100% 100%, 43% 100%, 0 68%, 0 0);
+//   }
+// }
+
+.border-cover {
+  clip-path: polygon(
+    15% 0,
+    85% 0,
+    100% 20%,
+    100% 80%,
+    85% 100%,
+    15% 100%,
+    0 80%,
+    0 20%
+  );
+  animation: rotateBorderCover 10s linear infinite;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+.main-container {
+  z-index: 0;
+}
